@@ -89,3 +89,16 @@ class Spot:
 
 	def __lt__(self, other):
 		return False
+
+#function for position 1 and 2 
+def h(p1, p2):
+	x1, y1 = p1
+	return abs(x1 - x2) + abs(y1 - y2)
+
+#function to make path loop
+def reconstruct_path(came_from, current, draw):
+	while current in came_from:
+		current = came_from[current]
+		current.make_path()
+		draw()
+
