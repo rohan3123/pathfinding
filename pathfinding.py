@@ -122,6 +122,28 @@ def draw_grid(win, rows, width):
         for j in range(rows):
             pygame.draw.line(win, GREY, (j * gap, 0), (j * gap, width))
 
+#function to get the mouse button click and position   
+def get_clicked_pos(pos, rows, width):
+	gap = width // rows
+	y, x = pos
+
+	row = y // gap
+	col = x // gap
+
+	return row, col
+
+#function to make grid and initialise it
+def make_grid(rows, width):
+	grid = []
+	gap = width // rows
+	for i in range(rows):
+		grid.append([])
+		for j in range(rows):
+			spot = Spot(i, j, gap, rows)
+			grid[i].append(spot)
+
+	return grid
+
 #main function to draw grid 
 def main(win, width):
 	ROWS = 50
